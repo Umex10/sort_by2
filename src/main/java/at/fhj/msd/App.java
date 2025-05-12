@@ -9,6 +9,7 @@ import at.fhj.msd.contact.Contact;
 import at.fhj.msd.contact.ContactByFirstNameComparator;
 import at.fhj.msd.contact.ContactByLastNameComparator;
 import at.fhj.msd.contact.ContactWithAddress;
+import at.fhj.msd.contact.ContactWithAddressComparator;
 
 /**
  * @author Umejr Dzinovic
@@ -16,6 +17,9 @@ import at.fhj.msd.contact.ContactWithAddress;
 public class App {
 
     public static void main(String[] args) {
+
+        System.out.println("-----------------------------UNSORTED-----------------------------");
+
         List<Contact> contacts = new ArrayList<>();
         contacts.add(new Contact("Alex", "Muster"));
         contacts.add(new Contact("John", "Doe"));
@@ -43,6 +47,17 @@ public class App {
         System.out.println("-----------------------------SECOND-----------------------------");
 
         Collections.sort(contacts, compLastName);
+
+        for (Contact contact : contacts) {
+            System.out.println(contact);
+        }
+
+        System.out.println();
+        System.out.println("-----------------------------ContactWithAddress-----------------------------");
+
+        ContactWithAddressComparator compAddress = new ContactWithAddressComparator();
+
+        Collections.sort(contacts, compAddress);
 
         for (Contact contact : contacts) {
             System.out.println(contact);
